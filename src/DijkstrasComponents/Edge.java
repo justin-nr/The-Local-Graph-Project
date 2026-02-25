@@ -2,10 +2,19 @@ package DijkstrasComponents;
 
 public class Edge {
 
-    Object edge() {
+    //Variables
+    String label;
+    String description;
+    int weight;
 
+    //creates object
+    Object edge(String label, String description, int weight) {
+        //applies varibles to object
+        this.label = label;
+        this.weight = weight;
+        this.description = description;
 
-        return edge;
+        //returns the applied variables with object
+        return edge(label, description, weight); //null as placeholder
     }
-
 }
