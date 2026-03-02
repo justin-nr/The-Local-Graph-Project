@@ -182,7 +182,13 @@ public class JsonReader {
     =====================
      */
 
-        //single value outside of groups
+        /**
+         * After reading a JSON, can be chained to get a JSON object inside of a JSON array or Object.
+         * Example use: JSONReader read = JSONReader.read(Your File).
+         * read.getString(name)
+         * @param getStringValue the String you want
+         * @return Json Primitive - String
+         */
         public String getString(String getStringValue) {
             JsonObject getFile = element.getAsJsonObject();
 
@@ -193,7 +199,15 @@ public class JsonReader {
             return getFile.get(getStringValue).getAsString();
         }
 
-        //single value inside of groups
+        /**
+         * After reading a JSON, can be chained to get a JSON object inside of a JSON array or Object.
+         * Example use: JSONReader read = JSONReader.read(Your File).
+         * read.getString(groupName, id, value)
+         * @param groupName the Json Object
+         * @param ID Index in the array
+         * @param getStringValue the Json Primitive value
+         * @return Json Primitive - String
+         */
         public String getString(String groupName, Integer ID, String getStringValue) {
             //gets the file
             JsonObject getFile = element.getAsJsonObject();
@@ -209,6 +223,14 @@ public class JsonReader {
             return getID.get(getStringValue).getAsString();
         }
 
+        /**
+         * After reading a JSON, can be chained to get a JSON object inside of a JSON array or Object.
+         * Example use: JSONReader read = JSONReader.read(Your File).
+         * read.getString(groupName, value)
+         * @param groupName the Json Object
+         * @param getStringValue the Json Primitive value
+         * @return Json Primitive - String
+         */
         public String getString(String groupName, String getStringValue) {
             //gets the file
             JsonObject getFile = element.getAsJsonObject();
