@@ -77,6 +77,11 @@ import com.google.gson.*;
             return new JsonReader(reader(fileName));
         }
 
+    public static JsonReader arrayread(String fileName) throws FileNotFoundException {
+
+        return new JsonReader(arrayReader(fileName));
+    }
+
         /**
          * After reading a JSON, can be chained to get a JSON object inside of a JSON array or Object.
          * Example use: the chain <---- .asString();
@@ -256,4 +261,12 @@ import com.google.gson.*;
             //returns JSON Object
             return new Gson().fromJson(reader, JsonObject.class);
         }
+
+    private static JsonArray arrayReader(String filename) throws FileNotFoundException {
+        //reads the JSON file
+        Reader reader = new BufferedReader(new FileReader(filename));
+
+        //returns JSON Object
+        return new Gson().fromJson(reader, JsonArray.class);
+    }
     }
