@@ -17,11 +17,7 @@ public class Graph {
     }
 
     public void insert(String key, Node nodeToAdd) {
-        boolean empty = (!map.containsKey(key));
-
-        if (empty) {
-            map.put(key, nodeToAdd);
-        }
+        map.putIfAbsent(key, nodeToAdd);
     }
     public void insertIgnore(String key, Node nodeToAdd) {
         map.put(key, nodeToAdd);
