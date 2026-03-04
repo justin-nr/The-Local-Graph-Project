@@ -6,23 +6,19 @@ import java.io.FileReader;
 import java.io.Reader;
 import com.google.gson.*;
 
-
-public class JsonReader {
-
-    /**
+/**
      * a class made to read JSON files. it's implemented to be able to read from any JSON format
      *
      * @author Gavin
      * @version 1.0.0
      * @since 2-8-2026
      */
-
-    public class JSONReader {
+    public class JsonReader {
 
         //prevent outside code from breaking method
         private final JsonElement element;
 
-        public JSONReader(JsonElement element)  {
+        public JsonReader(JsonElement element)  {
 
             this.element = element;
         }
@@ -40,11 +36,11 @@ public class JsonReader {
          *
          * @return JSON Object
          */
-        public JSONReader getName(String name) {
+        public JsonReader getName(String name) {
             if (element.isJsonObject()) {
                 JsonObject object = element.getAsJsonObject();
                 //return the field name
-                return new JSONReader(object.get(name));
+                return new JsonReader(object.get(name));
             }
 
             return null;
@@ -57,12 +53,12 @@ public class JsonReader {
          *
          * @return JSON Array
          */
-        public JSONReader getIndex(Integer index) {
+        public JsonReader getIndex(Integer index) {
             if (element.isJsonArray()) {
                 JsonArray array = element.getAsJsonArray();
 
                 //return field name
-                return new JSONReader(array.get(index));
+                return new JsonReader(array.get(index));
             }
 
             return null;
@@ -76,10 +72,15 @@ public class JsonReader {
          * @throws FileNotFoundException no file found
          * @return JSON file object
          */
-        public JSONReader read(String fileName) throws FileNotFoundException {
+        public static JsonReader read(String fileName) throws FileNotFoundException {
 
-            return new JSONReader(reader(fileName));
+            return new JsonReader(reader(fileName));
         }
+
+    public static JsonReader arrayread(String fileName) throws FileNotFoundException {
+
+        return new JsonReader(arrayReader(fileName));
+    }
 
         /**
          * After reading a JSON, can be chained to get a JSON object inside of a JSON array or Object.
@@ -260,6 +261,12 @@ public class JsonReader {
             //returns JSON Object
             return new Gson().fromJson(reader, JsonObject.class);
         }
-    }
 
-}
+    private static JsonArray arrayReader(String filename) throws FileNotFoundException {
+        //reads the JSON file
+        Reader reader = new BufferedReader(new FileReader(filename));
+
+        //returns JSON Object
+        return new Gson().fromJson(reader, JsonArray.class);
+    }
+    }
