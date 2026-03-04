@@ -1,33 +1,27 @@
 package DijkstrasComponents;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Graph {
-    String graphName;
-    HashMap map;
+    Map<String, List<Node>> map;
+    ArrayList<Node> nodes;
 
-    public Graph(){
-        this.graphName = "Graph";
+    Graph() {
         map = new HashMap<>();
-    }
-    public Graph(String graphName){
-        this.graphName = graphName;
-        map = new HashMap<>();
+        nodes = new ArrayList<Node>();
     }
 
-    public void insert(String key, Node nodeToAdd) {
-        map.putIfAbsent(key, nodeToAdd);
+    // Making a node from graph requires everything to place it.
+    public Node addNode(String name, String description, int posX, int posY) {
+        Node node = new Node(name, description);
+        node.setPosition(posX, posY);
+        nodes.add(node);
+        return node;
     }
-    public void insertIgnore(String key, Node nodeToAdd) {
-        map.put(key, nodeToAdd);
-    }
-
-
-    @Override
-    public String toString() {
-        return graphName + ": {" +
-                " Hash=" + map +
-                '}';
+    public void connectNode(Node node1, Node node2) {
+        node1.connect(node2);
     }
 }
