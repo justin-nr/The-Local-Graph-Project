@@ -90,6 +90,10 @@ import com.google.gson.*;
          */
         public String asString() {
 
+            if (element == null || element.isJsonNull()) {
+                return null;
+            }
+
             return element.getAsString();
         }
 
@@ -101,6 +105,10 @@ import com.google.gson.*;
          */
         public Integer asInt() {
 
+            if (element == null || element.isJsonNull()) {
+                return null;
+            }
+
             return element.getAsInt();
         }
 
@@ -111,6 +119,10 @@ import com.google.gson.*;
          * @return JsonElement
          */
         public JsonElement raw() {
+
+            if (element == null || element.isJsonNull()) {
+                return null;
+            }
 
             return element;
         }
