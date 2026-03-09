@@ -1,3 +1,4 @@
+import DijkstrasComponents.Dijkstras;
 import JsonComponents.JsonGenerator;
 import JsonComponents.JsonReader;
 
@@ -35,10 +36,10 @@ public class Main {
         Dijkstras.addEdge (adj, 3, 4, 10);
 
         //spits out the total time from start node to end node
-        ArrayList<Integer> result = Dijkstras.dijkstra(adj, src);
-        for (int i = 0; i < result.toArray().length; i ++) {
-            System.out.println("Node " + i + " distance " + result.get(i));
+        ArrayList<Integer> result = Dijkstras.dijkstra(adj,src);
+        for (int d: result)
+            System.out.println(d+ " ");
+        System.out.println();
         }
 
     }
-}

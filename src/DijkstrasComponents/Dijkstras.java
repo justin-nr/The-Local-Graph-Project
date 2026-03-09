@@ -1,10 +1,12 @@
+package DijkstrasComponents;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Dijkstras {
     //creates an array list for the algorithm. (src =  source)
-    static ArrayList<Integer> dijkstra(ArrayList<ArrayList<int[]>> adj, int src) {
+    public static ArrayList<Integer> dijkstra(ArrayList<ArrayList<int[]>> adj, int src) {
         int V = adj.size();
 
         //Prio queue that stores nodes(location) and edges(distance)
