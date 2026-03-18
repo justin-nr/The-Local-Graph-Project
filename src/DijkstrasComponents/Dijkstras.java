@@ -11,6 +11,10 @@ public class Dijkstras {
         int currentValue = 0;
         Node currentNode;
         ArrayList<Node> visits = new ArrayList<Node>();
+//        ArrayList<Node> unVisit = ;
+
+        Node findStart = graph.map.get(start);
+        Node findEnd = graph.map.get(end);
 
 
 

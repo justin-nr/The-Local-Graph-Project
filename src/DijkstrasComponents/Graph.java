@@ -10,10 +10,11 @@ import java.util.Objects;
 
 public class Graph {
     HashMap<String, Node> map;
-    HashMap<String, Connector> connectorHashMap;
+    ArrayList<Connector> connectors;
 
     public Graph(String fileName) {
         map = new HashMap<String, Node>();
+        connectors = new ArrayList<Connector>();
 
         JsonReader reader;
         try {
@@ -52,10 +53,18 @@ public class Graph {
 
                     Connector connector = new Connector(n1, n2, weight);
 
+                    connectors.add(connector);
+
                     currentIndex ++;
                 }
             }
         }
+    }
+
+    public ArrayList<Node> getNodes() {
+//        for (int i = 0; i < ; i ++) {
+//
+//        }
     }
 
     @Override
