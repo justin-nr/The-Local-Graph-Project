@@ -1,27 +1,65 @@
 package DijkstrasComponents;
+import JsonComponents.JsonReader;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Graph {
-    Map<String, List<Node>> map;
-    ArrayList<Node> nodes;
+    HashMap<String, Node> map;
+    HashMap<String, Connector> connectorHashMap;
 
-    Graph() {
-        map = new HashMap<>();
-        nodes = new ArrayList<Node>();
+    public Graph(String fileName) {
+        map = new HashMap<String, Node>();
+
+        JsonReader reader;
+        try {
+           reader = JsonReader.read(fileName);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        };
+        System.out.println(reader);
+
+        int number = 0;
+        ArrayList<String> nodeNames = new ArrayList<String>();
+        while (reader.getName("nodes").getIndex(number) != null) {
+            String name = reader.getName("nodes").getIndex(number).asString();
+            Node node = new Node(name);
+            map.put(name, node);
+            nodeNames.add(name);
+            number ++;
+        }
+        number = 0;
+        System.out.println(nodeNames);
+        for (int i = 0; i < nodeNames.size(); i ++) {
+            String indexed = nodeNames.get(i);
+//            System.out.println(indexed);
+
+            if (reader.getName("edges").getName(indexed).raw() != null) {
+                JsonReader obj = reader.getName("edges").getName(indexed);
+                int currentIndex = 0;
+                while (obj.getIndex(currentIndex) != null) {
+                    String to = obj.getIndex(currentIndex).getString("to");
+                    float weight = Float.parseFloat(obj.getIndex(currentIndex).getString("weight"));
+
+                    System.out.println(to + " | " + weight);
+
+                    Node n1 = map.get(indexed);
+                    Node n2 = map.get(to);
+
+                    Connector connector = new Connector(n1, n2, weight);
+
+                    currentIndex ++;
+                }
+            }
+        }
     }
 
-    // Making a node from graph requires everything to place it.
-    public Node addNode(String name, String description, int posX, int posY) {
-        Node node = new Node(name, description);
-        node.setPosition(posX, posY);
-        nodes.add(node);
-        return node;
-    }
-    public void connectNode(Node node1, Node node2) {
-        node1.connect(node2);
+    @Override
+    public String toString() {
+        return map.toString();
     }
 }

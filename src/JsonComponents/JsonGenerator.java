@@ -1,13 +1,9 @@
 package JsonComponents;
-import DijkstrasComponents.Node;
 import com.google.gson.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class JsonGenerator {
 

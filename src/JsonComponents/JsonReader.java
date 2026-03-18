@@ -58,7 +58,13 @@ import com.google.gson.*;
                 JsonArray array = element.getAsJsonArray();
 
                 //return field name
-                return new JsonReader(array.get(index));
+                JsonReader attempt;
+                try {
+                    attempt = new JsonReader(array.get(index));
+                } catch (Exception e) {
+                    return null;
+                }
+                return attempt;
             }
 
             return null;
