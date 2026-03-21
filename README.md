@@ -2,7 +2,7 @@ The Group Name: Quantum Goblin Council (QGC)
 
 External Packages:
 https://repo1.maven.org/maven2/com/google/code/gson/gson/2.13.2/gson-2.13.2.jar
-
+https://download2.gluonhq.com/openjfx/21.0.10/openjfx-21.0.10_windows-x64_bin-sdk.zip
 
 Directions (YES KEITH, YOU FOLLOW THIS TOO)
 ---
