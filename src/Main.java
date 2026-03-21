@@ -1,20 +1,36 @@
 import DijkstrasComponents.Dijkstras;
-import JsonComponents.JsonGenerator;
-import JsonComponents.JsonReader;
-
-import java.io.FileNotFoundException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-//        new JsonGenerator("test.json");
-//        JsonReader root = JsonReader.arrayread("test.json");
-//        String d = root.getIndex(1).getName("name").asString();
-//        String e = root.getIndex(2).getName("name").asString();
-//        String f = root.getIndex(3).getName("name").asString();
-//        System.out.print(d);
-//        System.out.print(e);
-//        System.out.print(f);
+import static javafx.application.Application.launch;
+
+public class Main extends Application {
+
+    /*=====================
+       Java FX run script
+     =======================*/
+
+    //find the file of the GUI window
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        Label label = new Label("Columbia Sign GUI");
+        Scene scene = new Scene(fxmlLoader.load(), 600, 800);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+
+        // launch method
+        launch();
+
 
         int V = 5;
         int src = 0;

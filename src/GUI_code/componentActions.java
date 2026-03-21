@@ -4,21 +4,27 @@ import JsonComponents.JsonReader;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Button;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
+import javafx.scene.control.TextArea;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 public class componentActions {
 
     //find the components in the FXML file (choiceBoxes)
     @FXML
-    ChoiceBox<String> choiceBox_1;
+    private ChoiceBox<String> choiceBox_1;
 
     @FXML
-    ChoiceBox<String> choiceBox_2;
+    private ChoiceBox<String> choiceBox_2;
 
     //buttons
     @FXML
-    Button button_1;
+    private Button button_1;
+
+    //text areas
+    @FXML
+    private TextArea textArea_1;
 
     //initialize is hard coded for some reason
     //it will run on startup pretty much
@@ -26,13 +32,14 @@ public class componentActions {
     public void initialize() throws FileNotFoundException {
         //runs any scripts that need to be run on application startup
         fillChoiceBox();
+        textArea_1.setEditable(false);
 
     }
 
     //make the array
     ArrayList<String> nodeNames = new ArrayList<>();
 
-    //Fill them with the data via an array located in the JSON file
+    //code to fill the choice boxes with choices
     @FXML
     public void fillChoiceBox() throws FileNotFoundException {
         //count the amount of stuff in the array
@@ -56,7 +63,10 @@ public class componentActions {
 
     }
 
-    public void onClick(ActionEvent Action) {
+    //code for the button
+    @FXML
+    public void onClick(ActionEvent event) {
+
         //get the user chosen values in the choice boxes
         String startLocation = choiceBox_1.getValue();
         String endLocation = choiceBox_2.getValue();
@@ -64,7 +74,7 @@ public class componentActions {
         //check if null
         if (startLocation == null && endLocation == null) {
             //error handling
-            System.out.print("missing locations.");
+            textArea_1.appendText("missing locations\n");
             return;
         }
 
@@ -76,6 +86,9 @@ public class componentActions {
         ArrayList<Integer> list = Dijkstras.dijkstra(null, indexStartLocation); //null for placeholder
 
         int result = list.get(indexEndLocation);
-        System.out.print(result);
+        textArea_1.appendText(String.valueOf(result));
+
+        textArea_1.appendText("found location\n");
+
     }
 }
