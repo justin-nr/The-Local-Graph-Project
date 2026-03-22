@@ -3,7 +3,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,18 +21,23 @@ public class Main extends Application {
     //find the file of the GUI window
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
 
+    //this small script start the GUI application
     @Override
     public void start(Stage stage) throws IOException {
-        Label label = new Label("Columbia Sign GUI");
-        Scene scene = new Scene(fxmlLoader.load(), 600, 800);
+
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
+
     }
 
     public static void main(String[] args) {
 
-        // launch method
+        // launch method for the GUI
         launch();
+
 
 
         int V = 5;
@@ -41,7 +49,7 @@ public class Main extends Application {
         }
 
         //l = location being looked at<start node>
-        //a = adjacent node
+        //o = adjacent node
         //n = time to neighboring node<weight>
         //example for first line: there is a path from 0 -> 1 and the cost is 4
         Dijkstras.addEdge (adj, 0, 1, 4);
