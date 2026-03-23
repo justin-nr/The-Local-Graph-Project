@@ -1,0 +1,165 @@
+{
+  "nodes": [
+    "Fir",
+    "DogWood",
+    "Juniper",
+    "Aspen",
+    "Cedar",
+    "Student Housing",
+    "Tennis Field",
+    "Buckeye",
+    "Manzanita",
+    "Library",
+    "Bus",
+    "Sequoia Building",
+    "Sugar Pine",
+    "Toyon",
+    "Redbud",
+    "Ponderosa",
+    "Maple",
+    "Madrone",
+    "Willow"
+  ],
+  "edges": {
+    "Fir": [
+      {
+        "to": "DogWood",
+        "weight": 100
+      },
+      {
+        "to": "Juniper",
+        "weight": 200
+      },
+      {
+        "to": "Buckeye",
+        "weight": 570
+      }
+    ],
+    "DogWood": [
+      {
+        "to": "Juniper",
+        "weight": 240
+      },
+      {
+        "to": "Buckeye",
+        "weight": 470
+      },
+      {
+        "to": "Cedar",
+        "weight": 190
+      },
+      {
+        "to": "Manzanita",
+        "weight": 160
+      },
+      {
+        "to": "Aspen",
+        "weight": 140
+      }
+    ],
+    "Juniper": [
+      {
+        "to": "Student Housing",
+        "weight": 940
+      },
+      {
+        "to": "Tennis Field",
+        "weight": 790
+      }
+    ],
+    "Buckeye": [
+      {
+        "to": "Manzanita",
+        "weight": 210
+      }
+    ],
+    "Cedar": [
+      {
+        "to": "Buckeye",
+        "weight": 200
+      }
+    ],
+    "Aspen": [
+      {
+        "to": "Buckeye",
+        "weight": 250
+      }
+    ],
+    "Manzanita": [
+      {
+        "to": "Library",
+        "weight": 500
+      },
+      {
+        "to": "Bus",
+        "weight": 160
+      },
+      {
+        "to": "Maple",
+        "weight": 670
+      }
+    ],
+    "Library": [
+      {
+        "to": "Maple",
+        "weight": 400
+      },
+      {
+        "to": "Redbud",
+        "weight": 190
+      }
+    ],
+    "Maple": [
+      {
+        "to": "Ponderosa",
+        "weight": 180
+      }
+    ],
+    "Ponderosa": [
+      {
+        "to": "Madrone",
+        "weight": 320
+      }
+    ],
+    "Madrone": [
+      {
+        "to": "Juniper",
+        "weight": 840
+      }
+    ],
+    "Redbud": [
+      {
+        "to": "Sequoia Building",
+        "weight": 200
+      }
+    ],
+    "Bus": [
+      {
+        "to": "Willow",
+        "weight": 400
+      }
+    ],
+    "Willow": [
+      {
+        "to": "Sequoia Building",
+        "weight": 630
+      }
+    ],
+    "Sequoia Building": [
+      {
+        "to": "Sugar Pine",
+        "weight": 240
+      },
+      {
+        "to": "Toyon",
+        "weight": 190
+      }
+    ],
+    "Toyon": [
+      {
+        "to": "Sugar Pine",
+        "weight": 60
+      }
+    ]
+  }
+}
