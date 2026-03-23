@@ -25,7 +25,6 @@
     "Oak Pavilion",
     "Oak Pavilion Parking",
     "Observatory",
-    "Paved Dogwood Sidepath",
     "Ponderosa",
     "Redbud",
     "Redbud/Tamarack Sidepath",
@@ -227,7 +226,7 @@
       },
       {
         "to": "Madrone",
-        "weight": 200,
+        "weight": 150,
         "direction": "northeast",
         "reverseDirection": "southwest"
       }
@@ -356,6 +355,20 @@
         "weight": 520,
         "direction": "west",
         "reverseDirection": "east"
+      },
+      {
+        "to": "Fire Station",
+        "weight": 510,
+        "direction": "south",
+        "reverseDirection": "north"
+      }
+    ],
+    "Fire Station": [
+      {
+        "to": "Campus Entrance Intersection",
+        "weight": 30,
+        "direction": "north",
+        "reverseDirection": "south"
       }
     ],
     "Student Housing Intersection": [
