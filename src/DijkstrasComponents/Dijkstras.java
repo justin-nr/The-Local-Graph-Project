@@ -1,71 +1,153 @@
 package DijkstrasComponents;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Dijkstras {
-    //creates an array list for the algorithm. (src =  source)
-    public static ArrayList<Integer> dijkstra(ArrayList<ArrayList<int[]>> adj, int src) {
-        int V = adj.size();
 
-        //Prio queue that stores nodes(location) and edges(distance)
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+    Graph graph;
+    String directionTemplate;
 
-        //makes distance array and stores shortest distance from starting point
-        int[] distance = new int[V];
-        Arrays.fill(distance, Integer.MAX_VALUE);
+    public Dijkstras(Graph graph, String directionTemplate) {
+        this.graph = graph;
+        this.directionTemplate = directionTemplate;
+//        System.out.println(directionTemplate);
+    }
 
-        //sets distance from source to itself as 0 in the queue
-        distance[src] = 0;
-        //source node with a distance of 0
-        //will always give you the node with the shortest distance
-        pq.offer(new int[]{0, src});
+    public String calculate(String start, String end) {
 
-        //process the priority queue until queue is empty
-        while (!pq.isEmpty()) {
-            //removes the closest known node
-            int[] top = pq.poll();
-            //shortest known time to reach the location
-            int t = top[0];
-            //the location being looked at
-            int l = top[1];
+        // This will be used later down the code when we are mapping out the directions.
+        StringBuilder builder = new StringBuilder();
 
-            //if the time isn't the shortest then it continues
-            if (t > distance[l])
-                continue;
+        float currentWeight = 0;
+        Node currentNode = null;
 
-            //explores other times
-            for (int[] p : adj.get(l)) {
-                //adjacent nodes
-                int o = p[0];
-                //time to neighboring nodes
-                int n = p[1];
+//        ArrayList<Node> visited = new ArrayList<Node>();
+        ArrayList<Node> unVisited = new ArrayList<Node>();
 
-                //if a shorter path is found to o (adjacent node) through l (location being looked at) then it updates
-                //figuring out if going through l(location being looked at) is faster than previously known fastest route to o(adjacent node)
-                if (distance[l] + n < distance[o]) {
-                    //if l(location being looked at) is faster then a(adjacent node) then shortest time is updated
-                    distance[o] = distance[l] + n;
-                    //adds the node (o) to the prio queue
-                    pq.offer(new int[]{distance [o], o});
+        for (Map.Entry<String, Node> entry : graph.map.entrySet()) {
+            entry.getValue().closestWeight = 999999999f;
+            entry.getValue().closestNode = null;
+            unVisited.add(entry.getValue());
+        }
+
+        if (!graph.map.containsKey(start) || !graph.map.containsKey(end)) {
+            throw new RuntimeException("Both start and end arguments have to be valid components of graph.map");
+        }
+
+        Node findStart = graph.map.get(start);
+        Node findEnd = graph.map.get(end);
+
+        findStart.closestWeight = 0f;
+        currentNode = findStart;
+
+        while (!unVisited.isEmpty()) {
+//             TODO Make a simple table system before completing.
+            unVisited.remove(currentNode);
+            currentWeight = currentNode.closestWeight;
+
+            for (Connector connector : currentNode.connectors) {
+                Edge e1 = connector.e1;
+
+                Node otherNode;
+
+                if (currentNode == e1.n1) {
+                    otherNode = e1.n2;
+                } else {
+                    otherNode = e1.n1;
+                }
+
+//                System.out.println(otherNode.closestWeight > currentWeight + connector.weight);
+                if (currentWeight + connector.weight < otherNode.closestWeight) {
+                    otherNode.closestNode = currentNode;
+                    otherNode.closestWeight = currentWeight + connector.weight;
                 }
             }
+
+            // Gets the next node with the lowest weight in unvisited.
+            
+            float lowestWeight = 9999999999999.99999f;
+            Node nextNode = null;
+            for (Node node : unVisited) {
+
+//                System.out.println(node.name + ", "  + node.closestWeight);
+
+                if (node.closestWeight < lowestWeight) {
+                    lowestWeight = node.closestWeight;
+                    nextNode = node;
+                }
+            }
+            if (nextNode != null) {
+                currentNode = nextNode;
+                currentWeight = nextNode.closestWeight;
+            }
         }
-        //puts distance into an arraylist and spits it out 🤪
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int d : distance)
-            result.add(d);
-        //returns shortest distance from the source
-        return result;
+
+        for (Map.Entry<String, Node> entry : graph.map.entrySet()) {
+            Node node = entry.getValue();
+//            System.out.println(node.name + ", " + node.closestNode + ", " + node.closestWeight);
+        }
+
+//        System.out.println(unVisited);
+
+        Node lastNode = findEnd.closestNode;
+        Connector lastConnector = getConnectorFromNodes(findEnd, lastNode);
+        String directionBasedOnNode = getDirectionBasedOnNode(lastConnector, lastNode);
+        float distance = lastConnector.weight;
+        builder.append(directionTemplate
+                .replace("{current}", lastNode.name)
+                .replace("{directions}", directionBasedOnNode)
+                .replace("{weight}", "" + lastConnector.weight)
+                .replace("{destination}", findEnd.name));
+        while (lastNode != null) {
+            float addingDistance = 0;
+
+            if (lastNode != null && lastNode.closestNode != null) {
+                lastConnector = getConnectorFromNodes(lastNode, lastNode.closestNode);
+                directionBasedOnNode = getDirectionBasedOnNode(lastConnector, lastNode.closestNode);
+                addingDistance = lastConnector.weight;
+                builder.insert(0, directionTemplate
+                        .replace("{current}", lastNode.closestNode.name)
+                        .replace("{directions}", directionBasedOnNode)
+                        .replace("{weight}", "" + lastConnector.weight)
+                        .replace("{destination}", lastNode.name)
+                + " -->\n");
+            }
+
+            lastNode = lastNode.closestNode;
+
+            if (lastNode != null) {
+                distance += addingDistance;
+//                System.out.println("Adding? " + addingDistance + " | " + distance);
+            }
+        }
+        if (distance > 0.0f) {
+            builder.append(" | ~").append(distance).append("ft");
+        } else {
+            builder.append(" | Um dude, you're already here???");
+        }
+
+        return builder.toString();
     }
 
-    //add edge method
-    public static void addEdge(ArrayList<ArrayList<int[]>> adj, int l, int o, int n){
-        //makes the graph bi-directional. saying if l(location being looked at) is connected to o(adjacent node) then o  connects to l
-        //if you want to have a one way then remove second line
-        adj.get(l).add(new int[]{o, n});
-        adj.get(o).add(new int[]{l, n});
+    public Connector getConnectorFromNodes(Node n1, Node n2) {
+        for (Connector connector : n1.connectors) {
+            Edge e1 = connector.e1;
+            if (e1.n1 == n2 || e1.n2 == n2) {
+                return connector;
+            }
+        }
+        return null;
     }
-
+    public String getDirectionBasedOnNode(Connector connector, Node node) {
+        Edge e1 = connector.e1;
+        Edge e2 = connector.e2;
+//        System.out.println(node.name);
+        if (node == e1.n1) {
+//            System.out.println(e1.directions + " E1");
+            return e1.directions;
+        } else {
+//            System.out.println(e2.directions + " E2");
+            return e2.directions;
+        }
+    }
 }

@@ -1,5 +1,5 @@
 {
-  "directionTemplate": "From {current} head {directions} towards {destination}.",
+  "directionTemplate": "From {current} head {directions} for around {weight} feet, towards {destination}.",
   "nodes": [
     "Aspen",
     "Bus",
@@ -14,6 +14,8 @@
     "Fire Station",
     "Juniper",
     "Juniper Paved Sidepath",
+    "Library",
+    "Library/Fir Intersection",
     "Manzanita",
     "Manzanita Intersection",
     "Maple",
@@ -23,7 +25,6 @@
     "Oak Pavilion",
     "Oak Pavilion Parking",
     "Observatory",
-    "Paved Dogwood Sidepath",
     "Ponderosa",
     "Redbud",
     "Redbud/Tamarack Sidepath",
@@ -58,6 +59,12 @@
         "weight": 100,
         "direction": "west",
         "reverseDirection": "east"
+      },
+      {
+        "to": "Aspen",
+        "weight": 200,
+        "direction": "south",
+        "reverseDirection": "north"
       }
     ],
     "Dogwood": [
@@ -120,6 +127,12 @@
         "weight": 200,
         "direction": "south",
         "reverseDirection": "north"
+      },
+      {
+        "to": "Manzanita",
+        "weight": 90,
+        "direction": "west",
+        "reverseDirection": "east"
       }
     ],
     "Aspen": [
@@ -128,11 +141,37 @@
         "weight": 250,
         "direction": "south",
         "reverseDirection": "north"
+      },
+      {
+        "to": "Cedar",
+        "weight": 50,
+        "direction": "southwest",
+        "reverseDirection": "northeast"
+      }
+    ],
+    "Library/Fir Intersection": [
+      {
+        "to": "Fir",
+        "weight": 200,
+        "direction": "east",
+        "reverseDirection": "west"
+      },
+      {
+        "to": "Library",
+        "weight": 200,
+        "direction": "north",
+        "reverseDirection": "south"
       }
     ],
     "Manzanita": [
       {
         "to": "Fir Gravel Path",
+        "weight": 300,
+        "direction": "north",
+        "reverseDirection": "south"
+      },
+      {
+        "to": "Library/Fir Intersection",
         "weight": 300,
         "direction": "north",
         "reverseDirection": "south"
@@ -172,8 +211,22 @@
         "reverseDirection": "south"
       },
       {
-        "to": "Day Care",
-        "weight": 120,
+        "to": "Library",
+        "weight": 200,
+        "direction": "southwest",
+        "reverseDirection": "northeast"
+      }
+    ],
+    "Day Care": [
+      {
+        "to": "Ponderosa",
+        "weight": 70,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
+      },
+      {
+        "to": "Madrone",
+        "weight": 150,
         "direction": "northeast",
         "reverseDirection": "southwest"
       }
@@ -212,6 +265,12 @@
         "weight": 200,
         "direction": "west",
         "reverseDirection": "east"
+      },
+      {
+        "to": "Library",
+        "weight": 150,
+        "direction": "east",
+        "reverseDirection": "west"
       },
       {
         "to": "Redbud/Tamarack Sidepath",
@@ -266,6 +325,12 @@
         "weight": 30,
         "direction": "southeast",
         "reverseDirection": "northwest"
+      },
+      {
+        "to": "Toyon",
+        "weight": 120,
+        "direction": "west",
+        "reverseDirection": "east"
       }
     ],
     "Toyon": [
@@ -284,12 +349,40 @@
         "reverseDirection": "east"
       }
     ],
+    "Tennis Courts": [
+      {
+        "to": "Aspen",
+        "weight": 520,
+        "direction": "west",
+        "reverseDirection": "east"
+      },
+      {
+        "to": "Fire Station",
+        "weight": 510,
+        "direction": "south",
+        "reverseDirection": "north"
+      }
+    ],
+    "Fire Station": [
+      {
+        "to": "Campus Entrance Intersection",
+        "weight": 30,
+        "direction": "north",
+        "reverseDirection": "south"
+      }
+    ],
     "Student Housing Intersection": [
       {
         "to": "Juniper Paved Sidepath",
         "weight": 240,
         "direction": "north",
         "reverseDirection": "south"
+      },
+      {
+        "to": "Madrone",
+        "weight": 840,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
       },
       {
         "to": "Campus Entrance Intersection",
