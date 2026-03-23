@@ -1,7 +1,7 @@
 package DijkstrasComponents;
 
 import java.util.ArrayList;
-
+//hi
 public class Node {
     String name;
 

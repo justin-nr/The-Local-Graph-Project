@@ -2,7 +2,7 @@ package GUI;
 
 import java.util.Map;
 import java.util.Scanner;
-
+//hi
 public class Input {
     Scanner scan;
 

@@ -19,7 +19,7 @@
          </font></Button>
       <TextArea fx:id="textArea_1" editable="false" layoutX="32.0" layoutY="218.0" prefHeight="132.0" prefWidth="536.0" style="-fx-control-inner-background: #1a202f; -fx-region-border: #1a202c; -fx-text-fill: #ffffff;">
          <font>
-            <Font name="Cambria Math" size="16.0" />
+            <Font name="Cambria Math" size="12.0" />
          </font>
       </TextArea>
       <Text fill="WHITE" layoutX="32.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Directions" wrappingWidth="138.13671875">
