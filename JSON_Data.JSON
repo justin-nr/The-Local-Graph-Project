@@ -60,6 +60,12 @@
         "weight": 100,
         "direction": "west",
         "reverseDirection": "east"
+      },
+      {
+        "to": "Aspen",
+        "weight": 200,
+        "direction": "south",
+        "reverseDirection": "north"
       }
     ],
     "Dogwood": [
@@ -140,8 +146,8 @@
       {
         "to": "Cedar",
         "weight": 50,
-        "direction": "northeast",
-        "reverseDirection": "southwest"
+        "direction": "southwest",
+        "reverseDirection": "northeast"
       }
     ],
     "Library/Fir Intersection": [

@@ -108,7 +108,7 @@ public class Dijkstras {
                 builder.insert(0, directionTemplate
                         .replace("{current}", lastNode.closestNode.name)
                         .replace("{directions}", directionBasedOnNode)
-                        .replace("{weight}", "" + lastNode.closestWeight)
+                        .replace("{weight}", "" + lastConnector.weight)
                         .replace("{destination}", lastNode.name)
                 + " -->\n");
             }
@@ -117,7 +117,7 @@ public class Dijkstras {
 
             if (lastNode != null) {
                 distance += addingDistance;
-                System.out.println("Adding? " + addingDistance + " | " + distance);
+//                System.out.println("Adding? " + addingDistance + " | " + distance);
             }
         }
         if (distance > 0.0f) {
