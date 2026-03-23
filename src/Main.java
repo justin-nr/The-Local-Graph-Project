@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Graph graph = new Graph("JSON_Data.JSON");
-        System.out.println(graph);
+//        System.out.println(graph);
 
         Dijkstras dijkstras = new Dijkstras(graph, JsonReader.read("JSON_Data.JSON").getString("directionTemplate"));
 
