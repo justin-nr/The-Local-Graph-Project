@@ -122,6 +122,12 @@
         "weight": 200,
         "direction": "south",
         "reverseDirection": "north"
+      },
+      {
+        "to": "Manzanita",
+        "weight": 90,
+        "direction": "west",
+        "reverseDirection": "east"
       }
     ],
     "Aspen": [
@@ -130,9 +136,15 @@
         "weight": 250,
         "direction": "south",
         "reverseDirection": "north"
+      },
+      {
+        "to": "Cedar",
+        "weight": 50,
+        "direction": "northeast",
+        "reverseDirection": "southwest"
       }
     ],
-    "Library/Fir Cross": [
+    "Library/Fir Intersection": [
       {
         "to": "Fir",
         "weight": 200,

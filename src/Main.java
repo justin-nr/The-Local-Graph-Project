@@ -11,7 +11,7 @@ public class Main {
 
         Dijkstras dijkstras = new Dijkstras(graph, JsonReader.read("JSON_Data.JSON").getString("directionTemplate"));
 
-        String data = dijkstras.calculate("Aspen", "Tamarack");
+        String data = dijkstras.calculate("Aspen", "Willow");
         System.out.println(data);
     }
 }

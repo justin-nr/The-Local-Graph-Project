@@ -90,24 +90,34 @@ public class Dijkstras {
 //        System.out.println(unVisited);
 
         Node lastNode = findEnd.closestNode;
-        float distance = findEnd.closestWeight;
-        builder.append(findEnd.name);
+        Connector lastConnector = getConnectorFromNodes(lastNode, lastNode.closestNode);
+        String directionBasedOnNode = getDirectionBasedOnNode(lastConnector, lastNode.closestNode);
+        float distance = lastConnector.weight;
+        builder.append(directionTemplate
+                .replace("{current}", lastNode.name)
+                .replace("{directions}", directionBasedOnNode)
+                .replace("{weight}", "" + lastConnector.weight)
+                .replace("{destination}", findEnd.name));
         while (lastNode != null) {
-            lastNode = lastNode.closestNode;
+            float addingDistance = 0;
 
             if (lastNode != null && lastNode.closestNode != null) {
-                Connector connector = getConnectorFromNodes(lastNode, lastNode.closestNode);
-                String directionBasedOnNode = getDirectionBasedOnNode(connector, lastNode.closestNode);
+                lastConnector = getConnectorFromNodes(lastNode, lastNode.closestNode);
+                directionBasedOnNode = getDirectionBasedOnNode(lastConnector, lastNode.closestNode);
+                addingDistance = lastConnector.weight;
                 builder.insert(0, directionTemplate
                         .replace("{current}", lastNode.closestNode.name)
                         .replace("{directions}", directionBasedOnNode)
-                        .replace("{weight}", "" + connector.weight)
+                        .replace("{weight}", "" + lastNode.closestWeight)
                         .replace("{destination}", lastNode.name)
                 + " -->\n");
             }
 
+            lastNode = lastNode.closestNode;
+
             if (lastNode != null) {
-                distance += lastNode.closestWeight;
+                distance += addingDistance;
+                System.out.println("Adding? " + addingDistance + " | " + distance);
             }
         }
         if (distance > 0.0f) {

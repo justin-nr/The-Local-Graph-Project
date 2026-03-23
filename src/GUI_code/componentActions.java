@@ -73,9 +73,9 @@ public class componentActions {
         int indexEndLocation = nodeNames.indexOf(endLocation);
 
         //plug the index's into the algorithm
-        ArrayList<Integer> list = Dijkstras.dijkstra(null, indexStartLocation); //null for placeholder
-
-        int result = list.get(indexEndLocation);
-        System.out.print(result);
+//        ArrayList<Integer> list = Dijkstras.dijkstra(null, indexStartLocation); //null for placeholder
+//
+//        int result = list.get(indexEndLocation);
+//        System.out.print(result);
     }
 }
