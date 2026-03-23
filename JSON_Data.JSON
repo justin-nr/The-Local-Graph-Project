@@ -1,164 +1,383 @@
 {
+  "directionTemplate": "From {current} head {directions} for around {weight} feet, towards {destination}.",
   "nodes": [
-    "Fir",
-    "DogWood",
-    "Juniper",
     "Aspen",
-    "Cedar",
-    "Student Housing",
-    "Tennis Field",
-    "Buckeye",
-    "Manzanita",
-    "Library",
     "Bus",
-    "Sequoia Building",
-    "Sugar Pine",
-    "Toyon",
-    "Redbud",
-    "Ponderosa",
+    "Buckeye",
+    "Campus Entrance Intersection",
+    "Cedar",
+    "Day Care",
+    "Dogwood",
+    "Dogwood Paved Sidepath",
+    "Fir",
+    "Fir Gravel Path",
+    "Fire Station",
+    "Juniper",
+    "Juniper Paved Sidepath",
+    "Library",
+    "Library/Fir Intersection",
+    "Manzanita",
+    "Manzanita Intersection",
     "Maple",
+    "Maple Gravel Path",
     "Madrone",
+    "Madrone Intersection",
+    "Oak Pavilion",
+    "Oak Pavilion Parking",
+    "Observatory",
+    "Paved Dogwood Sidepath",
+    "Ponderosa",
+    "Redbud",
+    "Redbud/Tamarack Sidepath",
+    "Sequoia",
+    "Sequoia Intersection",
+    "Sequoia/Tamarack Lake Path",
+    "Sequoia/Willow Sidepath",
+    "Student Housing",
+    "Student Housing Intersection",
+    "Sugar Pine",
+    "Tamarack",
+    "Tennis Courts",
+    "Toyon",
     "Willow"
   ],
   "edges": {
     "Fir": [
       {
-        "to": "DogWood",
-        "weight": 100
+        "to": "Dogwood",
+        "weight": 100,
+        "direction  ": "south",
+        "reverseDirection": "north"
       },
       {
         "to": "Juniper",
-        "weight": 200
+        "weight": 200,
+        "direction": "east",
+        "reverseDirection": "west"
       },
       {
-        "to": "Buckeye",
-        "weight": 570
+        "to": "Fir Gravel Path",
+        "weight": 100,
+        "direction": "west",
+        "reverseDirection": "east"
       }
     ],
-    "DogWood": [
-      {
-        "to": "Juniper",
-        "weight": 240
-      },
+    "Dogwood": [
       {
         "to": "Buckeye",
-        "weight": 470
+        "weight": 470,
+        "direction": "south",
+        "reverseDirection": "north"
       },
       {
         "to": "Cedar",
-        "weight": 190
+        "weight": 190,
+        "direction": "south",
+        "reverseDirection": "north"
       },
       {
-        "to": "Manzanita",
-        "weight": 160
+        "to": "Dogwood Paved Sidepath",
+        "weight": 160,
+        "direction": "west",
+        "reverseDirection": "east"
       },
       {
         "to": "Aspen",
-        "weight": 140
+        "weight": 140,
+        "direction": "south",
+        "reverseDirection": "north"
       }
     ],
     "Juniper": [
       {
-        "to": "Student Housing",
-        "weight": 940
+        "to": "Juniper Paved Sidepath",
+        "weight": 40,
+        "direction": "east",
+        "reverseDirection": "west"
       },
       {
-        "to": "Tennis Field",
-        "weight": 790
+        "to": "Fir",
+        "weight": 80,
+        "direction": "west",
+        "reverseDirection": "east"
       }
     ],
     "Buckeye": [
       {
         "to": "Manzanita",
-        "weight": 210
+        "weight": 210,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
+      },
+      {
+        "to": "Manzanita Intersection",
+        "weight": 210,
+        "direction": "southwest",
+        "reverseDirection": "northeast"
       }
     ],
     "Cedar": [
       {
         "to": "Buckeye",
-        "weight": 200
+        "weight": 200,
+        "direction": "south",
+        "reverseDirection": "north"
       }
     ],
     "Aspen": [
       {
         "to": "Buckeye",
-        "weight": 250
+        "weight": 250,
+        "direction": "south",
+        "reverseDirection": "north"
+      }
+    ],
+    "Library/Fir Cross": [
+      {
+        "to": "Fir",
+        "weight": 200,
+        "direction": "east",
+        "reverseDirection": "west"
+      },
+      {
+        "to": "Library",
+        "weight": 200,
+        "direction": "north",
+        "reverseDirection": "south"
       }
     ],
     "Manzanita": [
       {
-        "to": "Library",
-        "weight": 500
+        "to": "Fir Gravel Path",
+        "weight": 300,
+        "direction": "north",
+        "reverseDirection": "south"
+      },
+      {
+        "to": "Library/Fir Intersection",
+        "weight": 300,
+        "direction": "north",
+        "reverseDirection": "south"
       },
       {
         "to": "Bus",
-        "weight": 160
-      },
-      {
-        "to": "Maple",
-        "weight": 670
+        "weight": 160,
+        "direction": "southwest",
+        "reverseDirection": "northeast"
       }
     ],
-    "Library": [
+    "Tamarack": [
       {
         "to": "Maple",
-        "weight": 400
+        "weight": 400,
+        "direction": "northeast",
+        "reverseDirection": "southwest"
       },
       {
-        "to": "Redbud",
-        "weight": 190
+        "to": "Redbud/Tamarack Sidepath",
+        "weight": 50,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
+      },
+      {
+        "to": "Maple Gravel Path",
+        "weight": 50,
+        "direction": "northeast",
+        "reverseDirection": "southwest"
       }
     ],
     "Maple": [
       {
         "to": "Ponderosa",
-        "weight": 180
+        "weight": 180,
+        "direction": "west",
+        "reverseDirection": "east"
+      },
+      {
+        "to": "Library",
+        "weight": 200,
+        "direction": "southwest",
+        "reverseDirection": "northeast"
+      }
+    ],
+    "Day Care": [
+      {
+        "to": "Ponderosa",
+        "weight": 70,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
+      },
+      {
+        "to": "Madrone",
+        "weight": 200,
+        "direction": "northeast",
+        "reverseDirection": "southwest"
       }
     ],
     "Ponderosa": [
       {
         "to": "Madrone",
-        "weight": 320
+        "weight": 320,
+        "direction": "northeast",
+        "reverseDirection": "southwest"
+      },
+      {
+        "to": "Maple Gravel Path",
+        "weight": 120,
+        "direction": "south",
+        "reverseDirection": "north"
       }
     ],
     "Madrone": [
       {
-        "to": "Juniper",
-        "weight": 840
+        "to": "Madrone Intersection",
+        "weight": 100,
+        "direction": "southwest",
+        "reverseDirection": "northeast"
+      },
+      {
+        "to": "Observatory",
+        "weight": 850,
+        "direction": "north",
+        "reverseDirection": "south"
       }
     ],
     "Redbud": [
       {
-        "to": "Sequoia Building",
-        "weight": 200
+        "to": "Sequoia",
+        "weight": 200,
+        "direction": "west",
+        "reverseDirection": "east"
+      },
+      {
+        "to": "Library",
+        "weight": 150,
+        "direction": "east",
+        "reverseDirection": "west"
+      },
+      {
+        "to": "Redbud/Tamarack Sidepath",
+        "weight": 60,
+        "direction": "east",
+        "reverseDirection": "west"
       }
     ],
     "Bus": [
       {
         "to": "Willow",
-        "weight": 400
+        "weight": 400,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
+      },
+      {
+        "to": "Manzanita Intersection",
+        "weight": 170,
+        "direction": "southeast",
+        "reverseDirection": "northwest"
       }
     ],
     "Willow": [
       {
-        "to": "Sequoia Building",
-        "weight": 630
+        "to": "Sequoia",
+        "weight": 630,
+        "direction": "north",
+        "reverseDirection": "south"
+      },
+      {
+        "to": "Sequoia/Willow Sidepath",
+        "weight": 300,
+        "direction": "north",
+        "reverseDirection": "south"
       }
     ],
-    "Sequoia Building": [
+    "Sequoia": [
       {
-        "to": "Sugar Pine",
-        "weight": 240
+        "to": "Sequoia Intersection",
+        "weight": 30,
+        "direction": "north",
+        "reverseDirection": "south"
+      },
+      {
+        "to": "Sequoia/Willow Sidepath",
+        "weight": 30,
+        "direction": "south",
+        "reverseDirection": "north"
+      },
+      {
+        "to": "Sequoia/Tamarack Lake Path",
+        "weight": 30,
+        "direction": "southeast",
+        "reverseDirection": "northwest"
       },
       {
         "to": "Toyon",
-        "weight": 190
+        "weight": 120,
+        "direction": "west",
+        "reverseDirection": "east"
       }
     ],
     "Toyon": [
       {
         "to": "Sugar Pine",
-        "weight": 60
+        "weight": 60,
+        "direction": "west",
+        "reverseDirection": "east"
+      }
+    ],
+    "Student Housing": [
+      {
+        "to": "Student Housing Intersection",
+        "weight": 500,
+        "direction": "west",
+        "reverseDirection": "east"
+      }
+    ],
+    "Tennis Courts": [
+      {
+        "to": "Aspen",
+        "weight": 520,
+        "direction": "west",
+        "reverseDirection": "east"
+      }
+    ],
+    "Student Housing Intersection": [
+      {
+        "to": "Juniper Paved Sidepath",
+        "weight": 240,
+        "direction": "north",
+        "reverseDirection": "south"
+      },
+      {
+        "to": "Madrone",
+        "weight": 840,
+        "direction": "northwest",
+        "reverseDirection": "southeast"
+      },
+      {
+        "to": "Campus Entrance Intersection",
+        "weight": 700,
+        "direction": "south",
+        "reverseDirection": "north"
+      },
+      {
+        "to": "Tennis Courts",
+        "weight": 300,
+        "direction": "west",
+        "reverseDirection": "east"
+      }
+    ],
+    "Oak Pavilion": [
+      {
+        "to": "Manzanita Intersection",
+        "weight": 530,
+        "direction": "north",
+        "reverseDirection": "south"
+      },
+      {
+        "to": "Oak Pavilion Parking",
+        "weight": 350,
+        "direction": "south",
+        "reverseDirection": "north"
       }
     ]
   }
