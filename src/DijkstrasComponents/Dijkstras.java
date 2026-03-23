@@ -90,8 +90,8 @@ public class Dijkstras {
 //        System.out.println(unVisited);
 
         Node lastNode = findEnd.closestNode;
-        Connector lastConnector = getConnectorFromNodes(lastNode, lastNode.closestNode);
-        String directionBasedOnNode = getDirectionBasedOnNode(lastConnector, lastNode.closestNode);
+        Connector lastConnector = getConnectorFromNodes(findEnd, lastNode);
+        String directionBasedOnNode = getDirectionBasedOnNode(lastConnector, lastNode);
         float distance = lastConnector.weight;
         builder.append(directionTemplate
                 .replace("{current}", lastNode.name)
@@ -141,9 +141,12 @@ public class Dijkstras {
     public String getDirectionBasedOnNode(Connector connector, Node node) {
         Edge e1 = connector.e1;
         Edge e2 = connector.e2;
+        System.out.println(node.name);
         if (node == e1.n1) {
+            System.out.println(e1.directions + " E1");
             return e1.directions;
         } else {
+            System.out.println(e2.directions + " E2");
             return e2.directions;
         }
     }

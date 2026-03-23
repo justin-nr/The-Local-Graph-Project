@@ -208,8 +208,8 @@
       {
         "to": "Ponderosa",
         "weight": 180,
-        "direction": "west",
-        "reverseDirection": "east"
+        "direction": "north",
+        "reverseDirection": "south"
       },
       {
         "to": "Library",

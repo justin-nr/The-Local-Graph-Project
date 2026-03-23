@@ -39,7 +39,7 @@ public class componentActions {
         int indexCount = 19;
 
         //read the file
-        JsonReader reader = JsonReader.read("Nodes.JSON");
+        JsonReader reader = JsonReader.read("JSON_Data.JSON");
 
         //loop through all index's to get all information
         for (int i = 0; i < indexCount; i++) {
